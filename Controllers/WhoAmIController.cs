@@ -48,12 +48,9 @@ namespace Azure.SQL.DB.Samples.Controllers
         {
             try
             {
-                var csb = new SqlConnectionStringBuilder(_config.GetConnectionString("AzureSQL"));  
+                var ConnectionString = _config.GetConnectionString("AzureSQL")                        
 
-                if (csb.Authentication == SqlAuthenticationMethod.NotSpecified && string.IsNullOrEmpty(token))
-                    csb.Authentication = SqlAuthenticationMethod.ActiveDirectoryDefault;                        
-
-                using (var conn = new SqlConnection(csb.ConnectionString))
+                using (var conn = new SqlConnection(ConnectionString))
                 {                    
                     if (csb.Authentication == SqlAuthenticationMethod.NotSpecified && !string.IsNullOrEmpty(token))
                         conn.AccessToken = token;
