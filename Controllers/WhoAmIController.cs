@@ -48,7 +48,7 @@ namespace Azure.SQL.DB.Samples.Controllers
         {
             try
             {
-                var ConnectionString = _config.GetConnectionString("AzureSQL")                        
+                string ConnectionString = _config.GetConnectionString("AzureSQL")                        
 
                 using (var conn = new SqlConnection(ConnectionString))
                 {                    
